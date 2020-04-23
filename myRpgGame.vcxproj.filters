@@ -1,0 +1,119 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Файлы ресурсов">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+    <Filter Include="Core">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;c++;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="main">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hh;hpp;hxx;h++;hm;inl;inc;ipp;xsd</Extensions>
+    </Filter>
+    <Filter Include="States">
+      <UniqueIdentifier>{c5d87cef-07f7-48bc-83a8-f4c9333b3e86}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Entitys">
+      <UniqueIdentifier>{6c205e2d-5409-4d4a-8352-4102d18769ca}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="stuff">
+      <UniqueIdentifier>{c366cad2-9c22-444d-9203-93703a101f44}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="TinyXMl">
+      <UniqueIdentifier>{f7ee0896-d05f-4c41-8102-5b46f9d1e477}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="TileMap">
+      <UniqueIdentifier>{14133c3c-c29c-4f50-88a8-e2880b765b8c}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="CORE.cpp">
+      <Filter>Core</Filter>
+    </ClCompile>
+    <ClCompile Include="main.cpp">
+      <Filter>main</Filter>
+    </ClCompile>
+    <ClCompile Include="EntityClass.cpp">
+      <Filter>Entitys</Filter>
+    </ClCompile>
+    <ClCompile Include="MainMenuClass.cpp">
+      <Filter>States</Filter>
+    </ClCompile>
+    <ClCompile Include="Setting.cpp">
+      <Filter>stuff</Filter>
+    </ClCompile>
+    <ClCompile Include="StateClass.cpp">
+      <Filter>States</Filter>
+    </ClCompile>
+    <ClCompile Include="GameStateClass.cpp">
+      <Filter>States</Filter>
+    </ClCompile>
+    <ClCompile Include="ButtonClass.cpp">
+      <Filter>stuff</Filter>
+    </ClCompile>
+    <ClCompile Include="tinystr.cpp">
+      <Filter>TinyXMl</Filter>
+    </ClCompile>
+    <ClCompile Include="tinyxml.cpp">
+      <Filter>TinyXMl</Filter>
+    </ClCompile>
+    <ClCompile Include="tinyxmlerror.cpp">
+      <Filter>TinyXMl</Filter>
+    </ClCompile>
+    <ClCompile Include="tinyxmlparser.cpp">
+      <Filter>TinyXMl</Filter>
+    </ClCompile>
+    <ClCompile Include="TileMap.cpp">
+      <Filter>TileMap</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="CORE.h">
+      <Filter>Core</Filter>
+    </ClInclude>
+    <ClInclude Include="EntityClass.h">
+      <Filter>Entitys</Filter>
+    </ClInclude>
+    <ClInclude Include="MainMenuClass.h">
+      <Filter>States</Filter>
+    </ClInclude>
+    <ClInclude Include="stdafx.h">
+      <Filter>stuff</Filter>
+    </ClInclude>
+    <ClInclude Include="Setting.h">
+      <Filter>stuff</Filter>
+    </ClInclude>
+    <ClInclude Include="GameStateClass.h">
+      <Filter>States</Filter>
+    </ClInclude>
+    <ClInclude Include="StateClass.h">
+      <Filter>States</Filter>
+    </ClInclude>
+    <ClInclude Include="ButtonClass.h">
+      <Filter>stuff</Filter>
+    </ClInclude>
+    <ClInclude Include="tinystr.h">
+      <Filter>TinyXMl</Filter>
+    </ClInclude>
+    <ClInclude Include="tinyxml.h">
+      <Filter>TinyXMl</Filter>
+    </ClInclude>
+    <ClInclude Include="TileMap.h">
+      <Filter>TileMap</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Config\setting.ini">
+      <Filter>Файлы ресурсов</Filter>
+    </None>
+    <None Include="Config\KeyBoard.ini">
+      <Filter>Файлы ресурсов</Filter>
+    </None>
+    <None Include="Config\KeyBoard_game.ini">
+      <Filter>Файлы ресурсов</Filter>
+    </None>
+  </ItemGroup>
+</Project>
