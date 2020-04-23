@@ -10,9 +10,7 @@ void EntityClass::initVariables()
 EntityClass::EntityClass()
 {
 	this->texture = new sf::Texture();
-	this->texture->loadFromFile("Resourses/images/player.png");
-
-		
+	this->texture->loadFromFile("Resourses/images/player.png");	
 }
 
 EntityClass::~EntityClass()
