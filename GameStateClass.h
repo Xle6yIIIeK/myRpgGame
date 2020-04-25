@@ -3,7 +3,7 @@
 
 
 #include "StateClass.h"
-#include "EntityClass.h"
+#include "PlayerClass.h"
 #include "TileMap.h"
 class GameState :
 	public State
@@ -11,11 +11,16 @@ class GameState :
 private:
 	sf::RenderWindow* window;
 	std::map<std::string, int>* supportedKeys;
-	EntityClass* p;
+	PlayerClass* player;
 
 	Level testlvl;
 
+	void initVariavles();
+
+
 	void initKeybinds();
+	void initTexture();
+	void initPlayer();
 	void initLevel();
 public:
 	GameState(StateData* state_data);

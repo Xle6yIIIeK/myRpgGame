@@ -1,6 +1,8 @@
 #ifndef ENTITYCLASS_H
 #define ENTITYCLASS_H
-#include"stdafx.h"
+#include "MovementComponents.h"
+
+class MovementComponent;
 
 class EntityClass
 {
@@ -9,18 +11,22 @@ private:
 
 protected:
 	sf::Texture* texture;
-	sf::Sprite* sprite;
-
-	float movementSpeed;
+	sf::Sprite sprite;
+		  
+	MovementComponent* movementcomponent;
 
 public:
+	//CONST - DEST
 	EntityClass();
 	virtual ~EntityClass();
 
-	void createSprite(sf::Texture* texture);
+	void setTexture(sf::Texture& texture);
+	void createMovementComponent(const float maxVelocity, const float acceleration, const float deceleration);
+
 
 	//funct
-	virtual void movement(const float& dt,const float x, const float y);
+	virtual void setPosition(const float x, const float y);
+	virtual void move(const float dir_x, const float dir_y, const float& dt);
 
 	virtual void update(const float& dt);
 	virtual void render(sf::RenderTarget* target);

@@ -1,5 +1,7 @@
 #ifndef STATE_H
 #define STATE_H
+
+
 #include "stdafx.h"
 #include "Setting.h"
 

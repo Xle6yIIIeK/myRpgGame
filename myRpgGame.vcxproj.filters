@@ -28,6 +28,9 @@
     <Filter Include="TileMap">
       <UniqueIdentifier>{14133c3c-c29c-4f50-88a8-e2880b765b8c}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Components">
+      <UniqueIdentifier>{62ec1fe2-9f54-46a7-829a-45a1cdf67523}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="CORE.cpp">
@@ -42,17 +45,11 @@
     <ClCompile Include="MainMenuClass.cpp">
       <Filter>States</Filter>
     </ClCompile>
-    <ClCompile Include="Setting.cpp">
-      <Filter>stuff</Filter>
-    </ClCompile>
     <ClCompile Include="StateClass.cpp">
       <Filter>States</Filter>
     </ClCompile>
     <ClCompile Include="GameStateClass.cpp">
       <Filter>States</Filter>
-    </ClCompile>
-    <ClCompile Include="ButtonClass.cpp">
-      <Filter>stuff</Filter>
     </ClCompile>
     <ClCompile Include="tinystr.cpp">
       <Filter>TinyXMl</Filter>
@@ -69,6 +66,18 @@
     <ClCompile Include="TileMap.cpp">
       <Filter>TileMap</Filter>
     </ClCompile>
+    <ClCompile Include="PlayerClass.cpp">
+      <Filter>Entitys</Filter>
+    </ClCompile>
+    <ClCompile Include="ButtonClass.cpp">
+      <Filter>Components</Filter>
+    </ClCompile>
+    <ClCompile Include="Setting.cpp">
+      <Filter>Components</Filter>
+    </ClCompile>
+    <ClCompile Include="MovementComponents.cpp">
+      <Filter>Components</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="CORE.h">
@@ -80,20 +89,11 @@
     <ClInclude Include="MainMenuClass.h">
       <Filter>States</Filter>
     </ClInclude>
-    <ClInclude Include="stdafx.h">
-      <Filter>stuff</Filter>
-    </ClInclude>
-    <ClInclude Include="Setting.h">
-      <Filter>stuff</Filter>
-    </ClInclude>
     <ClInclude Include="GameStateClass.h">
       <Filter>States</Filter>
     </ClInclude>
     <ClInclude Include="StateClass.h">
       <Filter>States</Filter>
-    </ClInclude>
-    <ClInclude Include="ButtonClass.h">
-      <Filter>stuff</Filter>
     </ClInclude>
     <ClInclude Include="tinystr.h">
       <Filter>TinyXMl</Filter>
@@ -103,6 +103,21 @@
     </ClInclude>
     <ClInclude Include="TileMap.h">
       <Filter>TileMap</Filter>
+    </ClInclude>
+    <ClInclude Include="PlayerClass.h">
+      <Filter>Entitys</Filter>
+    </ClInclude>
+    <ClInclude Include="stdafx.h">
+      <Filter>Core</Filter>
+    </ClInclude>
+    <ClInclude Include="ButtonClass.h">
+      <Filter>Components</Filter>
+    </ClInclude>
+    <ClInclude Include="Setting.h">
+      <Filter>Components</Filter>
+    </ClInclude>
+    <ClInclude Include="MovementComponents.h">
+      <Filter>Components</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

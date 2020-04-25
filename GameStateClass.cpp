@@ -1,5 +1,10 @@
 #include "GameStateClass.h"
 
+void GameState::initVariavles()
+{
+
+}
+
 void GameState::initKeybinds()
 {
 	std::fstream ifs("Config/KeyBoard_game.ini");
@@ -16,6 +21,16 @@ void GameState::initKeybinds()
 	ifs.close();
 }
 
+void GameState::initTexture()
+{
+	this->textures["sheet"].loadFromFile("Resourses/images/lenux4.png");
+}
+
+void GameState::initPlayer()
+{
+	this->player = new PlayerClass(0, 0, this->textures["sheet"]);
+}
+
 void GameState::initLevel()
 {
 	this->testlvl.LoadFromFile("Resourses/maps/qq.tmx");
@@ -27,16 +42,17 @@ GameState::GameState(StateData* state_data)
 	this->window = state_data->window;
 	this->supportedKeys = state_data->supportedKeys;
 	this->gridSize = state_data->gridSize;
-	
+							
+	this->initVariavles();
 	this->initKeybinds();
 	this->initLevel();
-	this->p = new EntityClass();
-
+	this->initTexture();
+	this->initPlayer();
 }
 
 GameState::~GameState()
 {
-	delete this->p;
+	delete this->player;
 }
 
 void GameState::updateMousePositions(sf::View* view)
@@ -54,13 +70,13 @@ void GameState::updateInput(const float& dt)
 
 	//Update player input
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Key(this->keybinds.at("MOVE_UP"))))
-		this->p->movement(dt, 0.f, -1.f);
+		this->player->move(0.f, -1.f, dt);
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Key(this->keybinds.at("MOVE_DOWN"))))
-		this->p->movement(dt, 0.f, 1.f);
+		this->player->move(0.f, 1.f, dt);
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Key(this->keybinds.at("MOVE_RIGHT"))))
-		this->p->movement(dt, 1.f, 0.f);
+		this->player->move(1.f, 0.f, dt);
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Key(this->keybinds.at("MOVE_LEFT"))))
-		this->p->movement(dt, -1.f, 0.f);
+		this->player->move(-1.f, 0.f, dt);
 
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Key(this->keybinds.at("CLOSE"))))
 		this->endState();
@@ -70,7 +86,8 @@ void GameState::update(const float &time)
 {
 	this->updateInput(time);
 	this->updateKeytime(time);
-	this->p->update(time);
+
+	this->player->update(time);
 }
 
 void GameState::render(sf::RenderTarget* target)
@@ -80,5 +97,5 @@ void GameState::render(sf::RenderTarget* target)
 
 	this->testlvl.Draw(target);
 
-	this->p->render(target);
+	this->player->render(target);
 }

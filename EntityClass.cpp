@@ -2,47 +2,54 @@
 
 void EntityClass::initVariables()
 {
-	this->movementSpeed = 100.f;
-	this->sprite = NULL;
-	this->texture = NULL;
+	this->movementcomponent = NULL;
 }
 
 EntityClass::EntityClass()
 {
-	this->texture = new sf::Texture();
-	this->texture->loadFromFile("Resourses/images/player.png");	
+	this->initVariables();
 }
 
 EntityClass::~EntityClass()
 {
-	delete this->sprite;
+	delete this->movementcomponent;
 }
 
-void EntityClass::createSprite(sf::Texture* texture)
+void EntityClass::createMovementComponent(const float maxVelocity, const float acceleration, const float deceleration)
 {
-	//this->texture = texture;
-	this->sprite->setTexture(*this->texture);
-	this->sprite->setScale(2,2);
+	this->movementcomponent = new MovementComponent(this->sprite, maxVelocity, acceleration, deceleration);
 }
 
-void EntityClass::movement(const float& dt, const float dir_x, const float dir_y)
+void EntityClass::setTexture(sf::Texture& texture)
 {
-	if (this->sprite)
+	this->texture = &texture;
+
+	this->sprite.setTexture(texture);
+	this->sprite.scale(0.4f, 0.4f);
+}
+
+
+void EntityClass::setPosition(const float x, const float y)
+{
+		this->sprite.setPosition(x, y);
+}
+
+void EntityClass::move(const float dir_x, const float dir_y, const float& dt)
+{
+	if (this->movementcomponent)
 	{
-	this->sprite->move(dir_x * this->movementSpeed *dt, dir_y * this->movementSpeed *dt);
+		this->movementcomponent->move(dir_x, dir_y, dt); //Sets velocity
 	}
 }
 
 void EntityClass::update(const float& dt)
 {
-	
-};
+	if (this->movementcomponent)
+		this->movementcomponent->update(dt);
+}
 
 void EntityClass::render(sf::RenderTarget* target)
 {
-	if (this->sprite)
-	{
-		target->draw(*this->sprite);
-	}
+		target->draw(this->sprite);
 }
 						     

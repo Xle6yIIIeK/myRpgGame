@@ -154,6 +154,8 @@
     <ClCompile Include="GameStateClass.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="MainMenuClass.cpp" />
+    <ClCompile Include="MovementComponents.cpp" />
+    <ClCompile Include="PlayerClass.cpp" />
     <ClCompile Include="Setting.cpp" />
     <ClCompile Include="TileMap.cpp" />
     <ClCompile Include="StateClass.cpp" />
@@ -167,6 +169,8 @@
     <ClInclude Include="CORE.h" />
     <ClInclude Include="EntityClass.h" />
     <ClInclude Include="GameStateClass.h" />
+    <ClInclude Include="MovementComponents.h" />
+    <ClInclude Include="PlayerClass.h" />
     <ClInclude Include="TileMap.h" />
     <ClInclude Include="MainMenuClass.h" />
     <ClInclude Include="Setting.h" />
