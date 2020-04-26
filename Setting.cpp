@@ -41,14 +41,14 @@ void GraphicsSettings::loadFromFile(const std::string path)
 		ifs >> this->verticalSync;
 		ifs >> this->contextSettings.antialiasingLevel;
 	}
-	
-	std::cout <<"title: "<< this->title<<"\n";
-	std::cout <<"resolution "<< this->resolution.width << "x" << this->resolution.height << "\n";
-	std::cout << "fullscreen " << this->fullscreen << "\n";
-	std::cout << "frameRateLimit " << this->frameRateLimit << "\n";
-	std::cout << "verticalSyn " << this->verticalSync << "\n";
-	std::cout << "antialiasingLevel " << this->contextSettings.antialiasingLevel << "\n";
-	
+	std::cout << "GraphicsSettings::loadFromFile\n \n";
+	std::cout << "	title: " << this->title << "\n";
+	std::cout << "	resolution " << this->resolution.width << "x" << this->resolution.height << "\n";
+	std::cout << "	fullscreen " << this->fullscreen << "\n";
+	std::cout << "	frameRateLimit " << this->frameRateLimit << "\n";
+	std::cout << "	verticalSyn " << this->verticalSync << "\n";
+	std::cout << "	antialiasingLevel " << this->contextSettings.antialiasingLevel << "\n";
+
 	ifs.close();
 }
 

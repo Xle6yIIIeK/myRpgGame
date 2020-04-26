@@ -11,7 +11,7 @@ private:
 	float gridSize;
 	sf::Clock clock;
 
-	float time;
+	float dt;
 
 	std::stack<State*> states;
 	std::map<std::string, int> supportedKeys;

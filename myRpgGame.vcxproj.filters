@@ -78,6 +78,9 @@
     <ClCompile Include="MovementComponents.cpp">
       <Filter>Components</Filter>
     </ClCompile>
+    <ClCompile Include="AnimatioComponent.cpp">
+      <Filter>Components</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="CORE.h">
@@ -117,6 +120,9 @@
       <Filter>Components</Filter>
     </ClInclude>
     <ClInclude Include="MovementComponents.h">
+      <Filter>Components</Filter>
+    </ClInclude>
+    <ClInclude Include="AnimatioComponent.h">
       <Filter>Components</Filter>
     </ClInclude>
   </ItemGroup>

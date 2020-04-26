@@ -61,36 +61,54 @@ void MainMenuClass::initStates(StateData* state_data)
 
 void MainMenuClass::initButtons()
 {
-	this->button["GAME_STATE_BUTTON"] = new ButtonClass(//typename[] Button
-		0,											   //Pos x
-		this->window->getSize().y - 30,				  //Pos Y
-		120, 30,									 //width heigth
-		&this->font, "New Game",					//Font & Text in button			
-		sf::Color(80, 80, 80),					   //IDLE_COLOR
-		sf::Color(100, 100, 100),				  //HOVER_COLOR
-		sf::Color(70, 70, 70)					 //ACTIVE_COLOR
+	this->button["GAME_STATE_BUTTON"] = new ButtonClass(//typename[""] Button
+		this->window->getSize().x - 120,			   //Pos x
+		this->window->getSize().y - 200,			  //Pos Y
+		120, 50,									 //width heigth
+		&this->font, "New Game",					//Font & Text in button	
+		23,										   //character size text
+		sf::Color(180, 180, 180),				  //TEXT_IDLE_COLOR
+		sf::Color(220, 220, 220),				 //TEXT_HOVER_COLOR
+		sf::Color(200, 200, 200),				//TEXT_ACTIVE_COLOR
+		sf::Color(80, 80, 80),				   //IDLE_COLOR
+		sf::Color(100, 100, 100),			  //HOVER_COLOR
+		sf::Color(70, 70, 70)				 //ACTIVE_COLOR
 		);
 
-	this->button["EXIT_BUTTON"] = new ButtonClass(
-		this->window->getSize().x - 120,		 
-		this->window->getSize().y-30,			 
-		120, 30,								 
-		&this->font, "Exit",					 
-		sf::Color(80, 80, 80),					 
-		sf::Color(100, 100, 100),				 
-		sf::Color(70, 70, 70)					 
+	this->button["EDITOR_BUTTON"] = new ButtonClass(    //typename[""] Button
+		this->window->getSize().x - 120,			   //Pos x					
+		this->window->getSize().y - 150,			  //Pos Y
+		120, 50,									 //width heigth
+		&this->font, "Editor",						//Font & Text in button	
+		23,										   //character size text
+		sf::Color(180, 180, 180),				  //TEXT_IDLE_COLOR
+		sf::Color(220, 220, 220),				 //TEXT_HOVER_COLOR
+		sf::Color(200, 200, 200),				//TEXT_ACTIVE_COLOR
+		sf::Color(80, 80, 80),				   //IDLE_COLOR
+		sf::Color(100, 100, 100),			  //HOVER_COLOR
+		sf::Color(70, 70, 70)				 //ACTIVE_COLOR
+		);
+
+	this->button["EXIT_BUTTON"] = new ButtonClass(		//typename[""] Button
+		this->window->getSize().x - 120,			   //Pos x					
+		this->window->getSize().y - 50,				  //Pos Y
+		120, 50,									 //width heigth
+		&this->font, "Exit",						//Font & Text in button	
+		23,										   //character size text
+		sf::Color(180, 180, 180),				  //TEXT_IDLE_COLOR
+		sf::Color(220, 220, 220),				 //TEXT_HOVER_COLOR
+		sf::Color(200, 200, 200),				//TEXT_ACTIVE_COLOR
+		sf::Color(80, 80, 80),				   //IDLE_COLOR
+		sf::Color(100, 100, 100),			  //HOVER_COLOR
+		sf::Color(70, 70, 70)				 //ACTIVE_COLOR					 
 		);
 }
 
 void MainMenuClass::initMusic()
 {
-	if(this->music.openFromFile("Resourses/Music/mainmenumusic.flac"))
-	{
-		std::cout << "loaded";
-	}
+	this->music.openFromFile("Resourses/Music/mainmenumusic.flac");
 	this->music.play();
 	this->music.setVolume(40);
-	std::cout << this->music.getStatus();
 }
 
 MainMenuClass::MainMenuClass(StateData* state_data)

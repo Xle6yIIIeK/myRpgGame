@@ -148,6 +148,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="AnimatioComponent.cpp" />
     <ClCompile Include="ButtonClass.cpp" />
     <ClCompile Include="CORE.cpp" />
     <ClCompile Include="EntityClass.cpp" />
@@ -165,6 +166,7 @@
     <ClCompile Include="tinyxmlparser.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="AnimatioComponent.h" />
     <ClInclude Include="ButtonClass.h" />
     <ClInclude Include="CORE.h" />
     <ClInclude Include="EntityClass.h" />

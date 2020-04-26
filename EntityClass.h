@@ -1,6 +1,8 @@
 #ifndef ENTITYCLASS_H
 #define ENTITYCLASS_H
+
 #include "MovementComponents.h"
+#include "AnimatioComponent.h"
 
 class MovementComponent;
 
@@ -10,11 +12,11 @@ private:
 	void initVariables();
 
 protected:
-	sf::Texture* texture;
+
 	sf::Sprite sprite;
 		  
 	MovementComponent* movementcomponent;
-
+	AnimatioComponent* anmationcomponent;
 public:
 	//CONST - DEST
 	EntityClass();
@@ -22,7 +24,7 @@ public:
 
 	void setTexture(sf::Texture& texture);
 	void createMovementComponent(const float maxVelocity, const float acceleration, const float deceleration);
-
+	void createAnimationComponent(sf::Texture& texture_sheet);
 
 	//funct
 	virtual void setPosition(const float x, const float y);

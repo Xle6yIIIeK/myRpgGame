@@ -13,6 +13,7 @@ EntityClass::EntityClass()
 EntityClass::~EntityClass()
 {
 	delete this->movementcomponent;
+	delete this->anmationcomponent;
 }
 
 void EntityClass::createMovementComponent(const float maxVelocity, const float acceleration, const float deceleration)
@@ -20,12 +21,14 @@ void EntityClass::createMovementComponent(const float maxVelocity, const float a
 	this->movementcomponent = new MovementComponent(this->sprite, maxVelocity, acceleration, deceleration);
 }
 
+void EntityClass::createAnimationComponent(sf::Texture& texture_sheet)
+{
+	this->anmationcomponent = new AnimatioComponent(this->sprite, texture_sheet);
+}
+
 void EntityClass::setTexture(sf::Texture& texture)
 {
-	this->texture = &texture;
-
 	this->sprite.setTexture(texture);
-	this->sprite.scale(0.4f, 0.4f);
 }
 
 
@@ -44,8 +47,7 @@ void EntityClass::move(const float dir_x, const float dir_y, const float& dt)
 
 void EntityClass::update(const float& dt)
 {
-	if (this->movementcomponent)
-		this->movementcomponent->update(dt);
+
 }
 
 void EntityClass::render(sf::RenderTarget* target)

@@ -3,7 +3,7 @@
 void CORE::initVariables()
 {
 	this->window = NULL;
-	this->time = 0.f;
+	this->dt = 0.f;
 	this->gridSize = 64.f;
 }
 
@@ -87,7 +87,7 @@ void CORE::endApplication()
 
 void CORE::updateTime()
 {
-	this->time = this->clock.restart().asSeconds();
+	this->dt = this->clock.restart().asSeconds();
 }
 
 void CORE::updateSFML()
@@ -108,7 +108,7 @@ void CORE::update()
 	{
 		if (this->window->hasFocus())
 		{
-			this->states.top()->update(this->time);
+			this->states.top()->update(this->dt);
 
 			if (this->states.top()->getQuit())
 			{
@@ -146,4 +146,6 @@ void CORE::run()
 		this->render();
 	}
 }
+
+
 										 

@@ -23,7 +23,7 @@ void GameState::initKeybinds()
 
 void GameState::initTexture()
 {
-	this->textures["sheet"].loadFromFile("Resourses/images/lenux4.png");
+	this->textures["sheet"].loadFromFile("Resourses/images/pal0.png");
 }
 
 void GameState::initPlayer()
@@ -82,12 +82,12 @@ void GameState::updateInput(const float& dt)
 		this->endState();
 }
 
-void GameState::update(const float &time)
+void GameState::update(const float &dt)
 {
-	this->updateInput(time);
-	this->updateKeytime(time);
+	this->updateInput(dt);
+	this->updateKeytime(dt);
 
-	this->player->update(time);
+	this->player->update(dt);
 }
 
 void GameState::render(sf::RenderTarget* target)

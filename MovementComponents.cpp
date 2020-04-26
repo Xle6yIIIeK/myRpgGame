@@ -35,6 +35,7 @@ void MovementComponent::update(const float& dt)
 	Moves the sprite.
 	*/
 
+	//Deceleration dir X
 	if (this->velocity.x > 0.f) //Check for positive x
 	{
 		//Max velocity check
@@ -58,6 +59,7 @@ void MovementComponent::update(const float& dt)
 			this->velocity.x = 0.f;
 	}
 
+	//Deceleration dir Y
 	if (this->velocity.y > 0.f) //Check for positive y
 	{
 		//Max velocity check

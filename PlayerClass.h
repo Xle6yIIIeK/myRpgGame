@@ -15,10 +15,10 @@ private:
 
 public:
 	//CONST - DEST
-	PlayerClass(float x, float y, sf::Texture& texture);
+	PlayerClass(float x, float y, sf::Texture& texture_sheet);
 	virtual ~PlayerClass();
 
 	//Functions
-
+	virtual void update(const float& dt);
 };
 #endif // !PLAYERCLASS_H
