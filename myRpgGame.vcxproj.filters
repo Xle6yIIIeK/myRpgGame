@@ -72,13 +72,19 @@
     <ClCompile Include="ButtonClass.cpp">
       <Filter>Components</Filter>
     </ClCompile>
-    <ClCompile Include="Setting.cpp">
-      <Filter>Components</Filter>
-    </ClCompile>
     <ClCompile Include="MovementComponents.cpp">
       <Filter>Components</Filter>
     </ClCompile>
     <ClCompile Include="AnimatioComponent.cpp">
+      <Filter>Components</Filter>
+    </ClCompile>
+    <ClCompile Include="EditorStateClass.cpp">
+      <Filter>States</Filter>
+    </ClCompile>
+    <ClCompile Include="Setting.cpp">
+      <Filter>main</Filter>
+    </ClCompile>
+    <ClCompile Include="HitBoxComponent.cpp">
       <Filter>Components</Filter>
     </ClCompile>
   </ItemGroup>
@@ -116,13 +122,19 @@
     <ClInclude Include="ButtonClass.h">
       <Filter>Components</Filter>
     </ClInclude>
-    <ClInclude Include="Setting.h">
-      <Filter>Components</Filter>
-    </ClInclude>
     <ClInclude Include="MovementComponents.h">
       <Filter>Components</Filter>
     </ClInclude>
     <ClInclude Include="AnimatioComponent.h">
+      <Filter>Components</Filter>
+    </ClInclude>
+    <ClInclude Include="EditorStateClass.h">
+      <Filter>States</Filter>
+    </ClInclude>
+    <ClInclude Include="Setting.h">
+      <Filter>main</Filter>
+    </ClInclude>
+    <ClInclude Include="HitBoxComponent.h">
       <Filter>Components</Filter>
     </ClInclude>
   </ItemGroup>

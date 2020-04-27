@@ -1,7 +1,7 @@
 #include "AnimatioComponent.h"
 
 AnimatioComponent::AnimatioComponent(sf::Sprite& sprite, sf::Texture& textureAnim) :
-	sprite(sprite), textute(textureAnim)
+	sprite(sprite), textute(textureAnim), lastAnimation(NULL)
 {
 
 }
@@ -29,8 +29,19 @@ void AnimatioComponent::addAnimation(const std::string key,
 }
 //someadd coment
 
-void AnimatioComponent::play(const std::string key,const float& dt)
+void AnimatioComponent::play(const std::string key, const float& dt)
 {
+	if (this->lastAnimation != this->animation[key])
+	{
+		if (this->lastAnimation == NULL)
+		{
+			this->lastAnimation = this->animation[key];
+		}
+		else
+		{
+			this->lastAnimation->reset();
+			this->lastAnimation = this->animation[key];
+		}
+	}
 	this->animation[key]->play(dt);
-
 }

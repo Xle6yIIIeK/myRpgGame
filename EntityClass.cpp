@@ -3,6 +3,8 @@
 void EntityClass::initVariables()
 {
 	this->movementcomponent = NULL;
+	this->anmationcomponent = NULL;
+	this->hitboxcomponent = NULL;
 }
 
 EntityClass::EntityClass()
@@ -14,6 +16,7 @@ EntityClass::~EntityClass()
 {
 	delete this->movementcomponent;
 	delete this->anmationcomponent;
+	delete this->hitboxcomponent;
 }
 
 void EntityClass::createMovementComponent(const float maxVelocity, const float acceleration, const float deceleration)

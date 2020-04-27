@@ -151,8 +151,10 @@
     <ClCompile Include="AnimatioComponent.cpp" />
     <ClCompile Include="ButtonClass.cpp" />
     <ClCompile Include="CORE.cpp" />
+    <ClCompile Include="EditorStateClass.cpp" />
     <ClCompile Include="EntityClass.cpp" />
     <ClCompile Include="GameStateClass.cpp" />
+    <ClCompile Include="HitBoxComponent.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="MainMenuClass.cpp" />
     <ClCompile Include="MovementComponents.cpp" />
@@ -169,8 +171,10 @@
     <ClInclude Include="AnimatioComponent.h" />
     <ClInclude Include="ButtonClass.h" />
     <ClInclude Include="CORE.h" />
+    <ClInclude Include="EditorStateClass.h" />
     <ClInclude Include="EntityClass.h" />
     <ClInclude Include="GameStateClass.h" />
+    <ClInclude Include="HitBoxComponent.h" />
     <ClInclude Include="MovementComponents.h" />
     <ClInclude Include="PlayerClass.h" />
     <ClInclude Include="TileMap.h" />

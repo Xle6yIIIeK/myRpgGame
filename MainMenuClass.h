@@ -1,7 +1,6 @@
 #ifndef MAINMENUSTATE_H
 #define MAINMENUSTATE_H
 #include "StateClass.h"
-#include "ButtonClass.h"
 
 class MainMenuClass	   
 	:public State

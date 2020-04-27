@@ -18,8 +18,43 @@ const sf::Vector2f& MovementComponent::getVelocity() const
 	return this->velocity;
 }
 
-
 //Functions
+const bool MovementComponent::getState(const short unsigned state) const
+{
+	switch (state)
+	{
+	case IDLE:
+		if (this->velocity.x == 0 && this->velocity.y == 0)
+			return true;
+		break;
+	case MOVING:
+		if (this->velocity.x != 0 || this->velocity.y != 0)
+			return true;
+		break;
+	case MOVELEFT:
+		if (this->velocity.x <= 0)
+			return true;
+		break;
+	case MOVERIGHT:
+		if (this->velocity.x >= 0)
+			return true;
+		break;
+	case MOVEUP:
+		if (this->velocity.y <= 0)
+			return true;
+		break;
+	case MOVEDOWN:
+		if (this->velocity.y >= 0)
+			return true;
+		break;
+	default:
+		return false;
+		break;
+	}
+
+	return false;
+}
+
 void MovementComponent::move(const float dir_x, const float dir_y, const float& dt)
 {
 	/* Accelerating a sprite until it reaches the max velocity. */

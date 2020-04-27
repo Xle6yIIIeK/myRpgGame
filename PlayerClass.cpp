@@ -17,7 +17,8 @@ PlayerClass::PlayerClass(float x, float y, sf::Texture& texture_sheet)
 	this->createMovementComponent(300.f, 20.f, 5.f);
 	this->createAnimationComponent(texture_sheet);
 
-	this->anmationcomponent->addAnimation("IDLE",10.f, 0, 0, 5, 0, 36, 16);
+	this->anmationcomponent->addAnimation("IDLE", 10.f, 0, 0, 5, 0, 48, 48);
+	this->anmationcomponent->addAnimation("WALK", 10.f, 0, 1, 5, 1, 48, 48);
 }
 
 PlayerClass::~PlayerClass()
@@ -28,9 +29,11 @@ PlayerClass::~PlayerClass()
 void PlayerClass::update(const float& dt)
 {
 	if (this->movementcomponent)
-	{
 		this->movementcomponent->update(dt);
-	}
 
-	this->anmationcomponent->play("IDLE", dt);
+	if(this->movementcomponent->getState(IDLE))
+		this->anmationcomponent->play("IDLE", dt);
+	else if(this->movementcomponent->getState(MOVELEFT))
+		this->anmationcomponent->play("WALK", dt);
+
 }

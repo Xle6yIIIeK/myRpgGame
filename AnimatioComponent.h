@@ -41,6 +41,7 @@ private:
 		//Function
 		void play(const float& dt)
 		{
+			
 			//Update tick
 			this->tick += 100.f * dt;
 			if (this->tick >= animTick)
@@ -73,6 +74,7 @@ private:
 	sf::Sprite& sprite;
 	sf::Texture& textute;
 	std::map<std::string, Animation*> animation;
+	Animation* lastAnimation;
 public:
 	AnimatioComponent(sf::Sprite& sprite, sf::Texture& textureAnim);
 	virtual ~AnimatioComponent();

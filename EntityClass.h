@@ -3,7 +3,7 @@
 
 #include "MovementComponents.h"
 #include "AnimatioComponent.h"
-
+#include "HitBoxComponent.h"
 class MovementComponent;
 
 class EntityClass
@@ -15,8 +15,9 @@ protected:
 
 	sf::Sprite sprite;
 		  
-	MovementComponent* movementcomponent;
+	HitBoxComponent* hitboxcomponent;
 	AnimatioComponent* anmationcomponent;
+	MovementComponent* movementcomponent;
 public:
 	//CONST - DEST
 	EntityClass();

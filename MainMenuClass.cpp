@@ -1,5 +1,6 @@
 #include "MainMenuClass.h"
 #include "GameStateClass.h"
+#include "EditorStateClass.h"
 
 void MainMenuClass::initVariables()
 {
@@ -108,7 +109,7 @@ void MainMenuClass::initMusic()
 {
 	this->music.openFromFile("Resourses/Music/mainmenumusic.flac");
 	this->music.play();
-	this->music.setVolume(40);
+	this->music.setVolume(10);
 }
 
 MainMenuClass::MainMenuClass(StateData* state_data)
@@ -160,6 +161,10 @@ void MainMenuClass::update(const float& dt)
 	if (this->button["GAME_STATE_BUTTON"]->isPressed())
 	{
 		this->states->push(new GameState(this->stateData));
+	}
+	if (this->button["EDITOR_BUTTON"]->isPressed())
+	{
+		this->states->push(new EditorStateClass(this->stateData));
 	}
 }
 

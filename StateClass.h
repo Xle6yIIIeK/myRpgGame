@@ -4,6 +4,7 @@
 
 #include "stdafx.h"
 #include "Setting.h"
+#include "ButtonClass.h"
 
 class GraphicsSettings;
 class State;
