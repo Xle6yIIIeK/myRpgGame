@@ -173,7 +173,7 @@ void MainMenuClass::playMusic()
 	
 }
 
-void MainMenuClass::renderButtons(sf::RenderTarget* target)
+void MainMenuClass::renderButtons(sf::RenderTarget& target)
 {
 	for (auto& it : this->button)
 	{
@@ -187,5 +187,5 @@ void MainMenuClass::render(sf::RenderTarget* target)
 		target = this->window;
 
 	target->draw(this->backgoundshape);
-	this->renderButtons(target);
+	this->renderButtons(*target);
 }

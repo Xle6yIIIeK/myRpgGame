@@ -7,6 +7,7 @@ class PlayerClass :
 {
 private:
 	//variables
+	bool attack;
 
 
 	//init Functions
@@ -19,6 +20,8 @@ public:
 	virtual ~PlayerClass();
 
 	//Functions
+	void updateAttack();
+	void updateAnimation(const float& dt);
 	virtual void update(const float& dt);
 };
 #endif // !PLAYERCLASS_H

@@ -23,7 +23,7 @@ void GameState::initKeybinds()
 
 void GameState::initTexture()
 {
-	this->textures["sheet"].loadFromFile("Resourses/images/pal0.png");
+	this->textures["sheet"].loadFromFile("Resourses/images/Entitys/tta.png");
 }
 
 void GameState::initPlayer()
@@ -37,12 +37,13 @@ void GameState::initLevel()
 }
 
 GameState::GameState(StateData* state_data)
-	:State(state_data)
+	:State(state_data)	 ,  pMenu(*window)
 {
 	this->window = state_data->window;
 	this->supportedKeys = state_data->supportedKeys;
 	this->gridSize = state_data->gridSize;
-							
+	this->paused = state_data->pause;
+
 	this->initVariavles();
 	this->initKeybinds();
 	this->initLevel();
@@ -60,12 +61,23 @@ void GameState::updateMousePositions(sf::View* view)
 
 }
 
+void GameState::updateInput(const float& dt)
+{
+	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Key(this->keybinds.at("CLOSE"))))
+	{
+		if (!this->paused)
+			this->pauseState();
+		else
+			this->unpauseState();
+	}
+}
+
 void GameState::updateKeytime(const float& dt)
 {
 
 }
 
-void GameState::updateInput(const float& dt)
+void GameState::updatePlayerInput(const float& dt)
 {
 
 	//Update player input
@@ -78,16 +90,23 @@ void GameState::updateInput(const float& dt)
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Key(this->keybinds.at("MOVE_LEFT"))))
 		this->player->move(-1.f, 0.f, dt);
 
-	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Key(this->keybinds.at("CLOSE"))))
-		this->endState();
+
 }
 
 void GameState::update(const float &dt)
 {
+	//this->updateMousePositions();
 	this->updateInput(dt);
-	this->updateKeytime(dt);
-
-	this->player->update(dt);
+	if (!this->paused)		 //unpause update
+	{
+		this->updateKeytime(dt);
+		this->updatePlayerInput(dt);
+		this->player->update(dt);
+	}
+	else	   //pause update
+	{
+		this->pMenu.update();
+	}
 }
 
 void GameState::render(sf::RenderTarget* target)
@@ -95,7 +114,16 @@ void GameState::render(sf::RenderTarget* target)
 	if (!target)
 		target = this->window;
 
-	this->testlvl.Draw(target);
 
-	this->player->render(target);
+	switch (this->paused)
+	{														
+	case true:
+		this->pMenu.render(*target);
+		break;
+	case false:
+		this->player->render(*target);
+		this->testlvl.Draw(target);
+		break;
+	}
+
 }

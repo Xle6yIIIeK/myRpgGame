@@ -23,15 +23,13 @@ public:
 	virtual ~MovementComponent();
 
 	//Accessors
+	const float& getMaxVelocity() const;
 	const sf::Vector2f& getVelocity() const;
 
 	//Functions
 	const bool getState(const short unsigned state) const;
 
-
-
 	void move(const float dir_x, const float dir_y, const float& dt);
 	void update(const float& dt);
 };
-
 #endif

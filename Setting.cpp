@@ -4,10 +4,10 @@ GraphicsSettings::GraphicsSettings()
 {
 	this->title = "Nova-Warrior";
 	this->resolution = sf::VideoMode::getDesktopMode();
-	this->fullscreen = false;
-	this->verticalSync = false;
+	this->fullscreen = 1;
+	this->verticalSync = 0;
 	this->frameRateLimit = 120;
-	this->contextSettings.antialiasingLevel = 0;
+	this->contextSettings.antialiasingLevel = 2;
 	this->videoModes = sf::VideoMode::getFullscreenModes();
 }
 

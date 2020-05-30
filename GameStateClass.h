@@ -5,11 +5,12 @@
 #include "StateClass.h"
 #include "PlayerClass.h"
 #include "TileMap.h"
+#include "PauseMenuClass.h"
 class GameState :
 	public State
 {
 private:
-	sf::RenderWindow* window;
+	PauseMenuClass pMenu;
 	std::map<std::string, int>* supportedKeys;
 	PlayerClass* player;
 
@@ -27,9 +28,11 @@ public:
 	virtual ~GameState();
 
 	void updateMousePositions(sf::View* view);
-	void updateKeytime(const float& dt);
 	void updateInput(const float& dt);
+	void updateKeytime(const float& dt);
+	void updatePlayerInput(const float& dt);
 	void update(const float& dt);
+																 
 	void render(sf::RenderTarget* target);
 
 };

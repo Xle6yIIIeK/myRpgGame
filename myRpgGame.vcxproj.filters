@@ -19,9 +19,6 @@
     <Filter Include="Entitys">
       <UniqueIdentifier>{6c205e2d-5409-4d4a-8352-4102d18769ca}</UniqueIdentifier>
     </Filter>
-    <Filter Include="stuff">
-      <UniqueIdentifier>{c366cad2-9c22-444d-9203-93703a101f44}</UniqueIdentifier>
-    </Filter>
     <Filter Include="TinyXMl">
       <UniqueIdentifier>{f7ee0896-d05f-4c41-8102-5b46f9d1e477}</UniqueIdentifier>
     </Filter>
@@ -30,6 +27,9 @@
     </Filter>
     <Filter Include="Components">
       <UniqueIdentifier>{62ec1fe2-9f54-46a7-829a-45a1cdf67523}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Shaders">
+      <UniqueIdentifier>{c366cad2-9c22-444d-9203-93703a101f44}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -87,6 +87,9 @@
     <ClCompile Include="HitBoxComponent.cpp">
       <Filter>Components</Filter>
     </ClCompile>
+    <ClCompile Include="PauseMenuClass.cpp">
+      <Filter>States</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="CORE.h">
@@ -116,9 +119,6 @@
     <ClInclude Include="PlayerClass.h">
       <Filter>Entitys</Filter>
     </ClInclude>
-    <ClInclude Include="stdafx.h">
-      <Filter>Core</Filter>
-    </ClInclude>
     <ClInclude Include="ButtonClass.h">
       <Filter>Components</Filter>
     </ClInclude>
@@ -137,6 +137,12 @@
     <ClInclude Include="HitBoxComponent.h">
       <Filter>Components</Filter>
     </ClInclude>
+    <ClInclude Include="stdafx.h">
+      <Filter>main</Filter>
+    </ClInclude>
+    <ClInclude Include="PauseMenuClass.h">
+      <Filter>States</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="Config\setting.ini">
@@ -147,6 +153,9 @@
     </None>
     <None Include="Config\KeyBoard_game.ini">
       <Filter>Файлы ресурсов</Filter>
+    </None>
+    <None Include="Source.def">
+      <Filter>Core</Filter>
     </None>
   </ItemGroup>
 </Project>

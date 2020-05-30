@@ -88,6 +88,7 @@ void CORE::endApplication()
 void CORE::updateTime()
 {
 	this->dt = this->clock.restart().asSeconds();
+	std::cout << this->dt <<"\n";
 }
 
 void CORE::updateSFML()

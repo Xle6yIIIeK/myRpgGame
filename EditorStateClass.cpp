@@ -101,9 +101,9 @@ void EditorStateClass::update(const float& dt)
 }
 
 
-void EditorStateClass::renderButtons(sf::RenderTarget* target)
+void EditorStateClass::renderButtons(sf::RenderTarget& target)
 {
-	for (auto& it : this->button)
+	for (auto &it : this->button)
 	{
 		it.second->render(target);
 	}
@@ -114,5 +114,5 @@ void EditorStateClass::render(sf::RenderTarget* target)
 	if (!target)
 		target = this->window;
 
-	this->renderButtons(target);
+	this->renderButtons(*target);
 }

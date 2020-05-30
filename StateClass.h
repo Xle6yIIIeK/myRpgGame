@@ -16,6 +16,7 @@ public:
 
 	//Variables
 	float gridSize;
+	bool pause;
 	sf::RenderWindow* window;
 	GraphicsSettings* settings;
 	std::map<std::string, int>* supportedKeys;
