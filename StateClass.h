@@ -4,7 +4,7 @@
 
 #include "stdafx.h"
 #include "Setting.h"
-#include "ButtonClass.h"
+#include "GUI.h"
 
 class GraphicsSettings;
 class State;
@@ -21,6 +21,7 @@ public:
 	GraphicsSettings* settings;
 	std::map<std::string, int>* supportedKeys;
 	std::stack<State*>* states;
+	sf::Font GlobalFont;
 };
 class State
 {
@@ -33,6 +34,7 @@ protected:
 
 	std::map<std::string, int>* supportedKeys;
 	std::map<std::string, int> keybinds;
+	sf::Font font;
 
 	bool quit;
 	bool paused;
@@ -70,5 +72,4 @@ public:
 	virtual void update(const float& dt) = 0;
 	virtual void render(sf::RenderTarget* target = NULL) = 0;
 };
-
 #endif

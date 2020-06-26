@@ -23,7 +23,14 @@ void GameState::initKeybinds()
 
 void GameState::initTexture()
 {
-	this->textures["sheet"].loadFromFile("Resourses/images/Entitys/tta.png");
+	this->textures["sheet"].loadFromFile("Resourses/images/Entitys/CustomSet.png");
+}
+
+void GameState::initPauseMenu()
+{
+	this->pMenu = new PauseMenuClass(*this->window, this->font);
+
+	this->pMenu->createButton("QUIT", this->window->getSize().y-(this->window->getSize().y/7), "Quit");
 }
 
 void GameState::initPlayer()
@@ -37,15 +44,17 @@ void GameState::initLevel()
 }
 
 GameState::GameState(StateData* state_data)
-	:State(state_data)	 ,  pMenu(*window)
+	:State(state_data)
 {
 	this->window = state_data->window;
 	this->supportedKeys = state_data->supportedKeys;
 	this->gridSize = state_data->gridSize;
 	this->paused = state_data->pause;
+	
 
 	this->initVariavles();
 	this->initKeybinds();
+	this->initPauseMenu();
 	this->initLevel();
 	this->initTexture();
 	this->initPlayer();
@@ -56,30 +65,34 @@ GameState::~GameState()
 	delete this->player;
 }
 
-void GameState::updateMousePositions(sf::View* view)
-{
-
-}
-
 void GameState::updateInput(const float& dt)
 {
-	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Key(this->keybinds.at("CLOSE"))))
+	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Key(this->keybinds.at("CLOSE"))) && this->getKeytime())
 	{
-		if (!this->paused)
-			this->pauseState();
-		else
+		switch (this->paused)
+		{
+		case true:
 			this->unpauseState();
+			break;
+		case false:
+			this->pauseState();
+			break;
+		}
 	}
+
+
 }
 
-void GameState::updateKeytime(const float& dt)
+void GameState::updateButtons()
 {
-
+	if (this->pMenu->Pressed("QUIT"))
+	{
+		this->endState();
+	}
 }
 
 void GameState::updatePlayerInput(const float& dt)
 {
-
 	//Update player input
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Key(this->keybinds.at("MOVE_UP"))))
 		this->player->move(0.f, -1.f, dt);
@@ -89,14 +102,14 @@ void GameState::updatePlayerInput(const float& dt)
 		this->player->move(1.f, 0.f, dt);
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Key(this->keybinds.at("MOVE_LEFT"))))
 		this->player->move(-1.f, 0.f, dt);
-
-
 }
 
 void GameState::update(const float &dt)
 {
-	//this->updateMousePositions();
+	this->updateMousePositions();
+	this->updateKeytime(dt);
 	this->updateInput(dt);
+	
 	if (!this->paused)		 //unpause update
 	{
 		this->updateKeytime(dt);
@@ -105,7 +118,8 @@ void GameState::update(const float &dt)
 	}
 	else	   //pause update
 	{
-		this->pMenu.update();
+		this->pMenu->update(this->mousePosView);
+		this->updateButtons();
 	}
 }
 
@@ -114,16 +128,14 @@ void GameState::render(sf::RenderTarget* target)
 	if (!target)
 		target = this->window;
 
-
 	switch (this->paused)
 	{														
 	case true:
-		this->pMenu.render(*target);
+		this->pMenu->render(*target);
 		break;
 	case false:
 		this->player->render(*target);
 		this->testlvl.Draw(target);
 		break;
 	}
-
 }

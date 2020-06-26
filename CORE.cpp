@@ -1,5 +1,6 @@
 #include "CORE.h"
 #include "stdafx.h"
+
 void CORE::initVariables()
 {
 	this->window = NULL;
@@ -9,6 +10,7 @@ void CORE::initVariables()
 
 void CORE::initWindow()
 {
+	
 	if (this->setting.fullscreen)
 	{
 		this->window = new sf::RenderWindow(
@@ -26,6 +28,7 @@ void CORE::initWindow()
 			this->setting.contextSettings);
 	}
 
+	
 	this->window->setFramerateLimit(this->setting.frameRateLimit);
 	this->window->setVerticalSyncEnabled(this->setting.verticalSync);
 }
@@ -58,11 +61,20 @@ void CORE::initStateData()
 	this->stateData.gridSize = this->gridSize;
 	this->stateData.supportedKeys = &this->supportedKeys;
 	this->stateData.states = &this->states;
+	this->stateData.GlobalFont = this->gFont;
 }
 
 void CORE::initState()
 {
 	this->states.push(new MainMenuClass(&this->stateData));
+}
+
+void CORE::initFount()
+{
+	if (!this->gFont.loadFromFile("Resourses/Fonts/Caveat-Regular.ttf"))
+	{
+		throw("ERROR::MAINMENUCLASS::INITFONTS font not find");
+	}
 }
 
 CORE::CORE()
@@ -71,6 +83,7 @@ CORE::CORE()
 	this->initGraphics();
 	this->initWindow();
 	this->initKeys();
+	this->initFount();
 	this->initStateData();
 	this->initState();
 }
@@ -82,13 +95,13 @@ CORE::~CORE()
 
 void CORE::endApplication()
 {
-	std::cout << "Ending Application!" << "\n";
+	
 }
+
 
 void CORE::updateTime()
 {
 	this->dt = this->clock.restart().asSeconds();
-	std::cout << this->dt <<"\n";
 }
 
 void CORE::updateSFML()
@@ -96,8 +109,9 @@ void CORE::updateSFML()
 	while (this->window->pollEvent(this->sfEvent))
 	{
 		if (this->sfEvent.type == sf::Event::Closed)
+		{
 			this->window->close();
-						 
+		}			 
 	}
 }				  
 
@@ -146,7 +160,4 @@ void CORE::run()
 		this->update();
 		this->render();
 	}
-}
-
-
-										 
+}									 

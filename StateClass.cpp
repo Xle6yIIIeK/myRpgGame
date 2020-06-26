@@ -12,6 +12,7 @@ State::State(StateData* state_data)
 	this->keytime = 0.f;
 	this->keytimeMax = 10.f;
 	this->gridSize = state_data->gridSize;
+	this->font = state_data->GlobalFont;
 }
 
 State::~State()
@@ -25,16 +26,6 @@ const bool & State::getQuit() const
 	return this->quit;
 }
 
-const bool State::getKeytime()
-{
-	if (this->keytime >= this->keytimeMax)
-	{
-		this->keytime = 0.f;
-		return true;
-	}
-
-	return false;
-}
 
 //Functions
 void State::endState()
@@ -73,8 +64,22 @@ void State::updateMousePositions(sf::View* view)
 	this->window->setView(this->window->getDefaultView());
 }
 
+const bool State::getKeytime()
+{
+	if (this->keytime >= this->keytimeMax)
+	{
+		this->keytime = 0.f;
+		return true;
+	}
+
+	return false;
+}
+
 void State::updateKeytime(const float& dt)
 {
 	if (this->keytime < this->keytimeMax)
-		this->keytime += 100.f * dt;
+	{
+		this->keytime += 10.f * dt;
+	}
 }
+

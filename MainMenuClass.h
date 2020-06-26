@@ -9,14 +9,12 @@ private:
 	//variables
 	sf::RectangleShape backgoundshape;
 	sf::Texture backgroundTexture;
-	sf::Font font;
 	sf::Music music;
 
-	std::map<std::string, ButtonClass*> button;
+	std::map<std::string, gui::ButtonClass*> button;
 
 	void initVariables();
 	void initKeybinds();	
-	void initFonts();
 	void initBackground();
 	void initStates(StateData* state_data);
 	void initButtons();

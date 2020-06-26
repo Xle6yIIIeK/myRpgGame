@@ -5,7 +5,7 @@ MovementComponent::MovementComponent(sf::Sprite& sprite,
 	:sprite(sprite),
 	maxVelocity(maxVelocity), acceleration(acceleration), deceleration(deceleration)
 {
-
+	
 }
 
 MovementComponent::~MovementComponent()

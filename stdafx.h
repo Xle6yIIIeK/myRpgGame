@@ -14,12 +14,10 @@
 //tiny xml
 #include "tinyxml.h"
 
-
 //SFML
 #include <SFML/System.hpp>
 #include <SFML/Graphics.hpp>
 #include <SFML/Window.hpp>
 #include <SFML/Audio.hpp>
 
-
-#endif // !1						 
+#endif // !1

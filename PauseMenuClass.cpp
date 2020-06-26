@@ -1,26 +1,25 @@
 #include "PauseMenuClass.h"
 
-void PauseMenuClass::createButton() 
-	
+const bool PauseMenuClass::Pressed(const std::string key) 
 {
-	this->buttons["BACK_TO_GAME"] = new ButtonClass( 
-		this->container.getSize().x /2,			 
-		this->container.getPosition().y/8,		  
-		120, 50,									
-		this->Font, "New Game",					
-		23,										 
-		sf::Color(180, 180, 180),			
-		sf::Color(220, 220, 220),				
-		sf::Color(200, 200, 200),				
-		sf::Color(80, 80, 80),				  
-		sf::Color(100, 100, 100),			  
-		sf::Color(70, 70, 70)				
-		);	 
-		
+	return this->buttons[key]->isPressed();
+}
+
+void PauseMenuClass::createButton(std::string key, const float y, std::string text)
+{
+	float wi = 120.f;
+	float he = 50.f;
+	float x = this->container.getPosition().x + this->container.getSize().x / 2.f - wi/2.f;
+	
+	this->buttons[key] = new gui::ButtonClass(
+		sf::Vector2f(x, y), sf::Vector2f(wi, he),
+		&this->pFont, text, 30,
+		sf::Color(180, 180, 180), sf::Color(220, 220, 220), sf::Color(200, 200, 200),
+		sf::Color(80, 80, 80), sf::Color(100, 100, 100), sf::Color(70, 70, 70));
 }
 
 PauseMenuClass::PauseMenuClass(sf::RenderWindow& window, sf::Font& font)
-	:Font(font)
+	:pFont(font)
 {
 	this->background.setSize(
 		sf::Vector2f(
@@ -33,23 +32,25 @@ PauseMenuClass::PauseMenuClass(sf::RenderWindow& window, sf::Font& font)
 
 	this->container.setSize(
 		sf::Vector2f(
-			static_cast<float>(window.getSize().x) / 4.f,
-			static_cast<float>(window.getSize().y)		 -100.f
+			static_cast<float>(window.getSize().x) / 3.f,
+			static_cast<float>(window.getSize().y) - 100.f
 			)
 		);
 
-	this->container.setFillColor(sf::Color(20, 20, 20, 200));
+	this->container.setFillColor(sf::Color(30, 30, 30));
 	this->container.setPosition(
-		static_cast<float>(window.getSize().x)
-		/ 2.f - this->container.getSize().x / 2.f,
-		0.f);
+		static_cast<float>(
+			window.getSize().x) / 2.f - this->container.getSize().x / 2.f,
+		50.f);
 
-	this->menuText.setFont(this->Font);
+	this->menuText.setString("PAUSED");
+	this->menuText.setCharacterSize(60);
+	this->menuText.setFont(this->pFont);
 	this->menuText.setFillColor(sf::Color(255, 255, 255, 200));
-	this->menuText.setCharacterSize(50);
-	this->menuText.setString("PAUSE");
-	this->menuText.setPosition(this->container.getPosition());
-	this->createButton();
+	this->menuText.setPosition(
+		static_cast<float>(this->container.getPosition().x+this->container.getSize().x/2 - this->menuText.getGlobalBounds().width/2),
+		static_cast<float>(this->container.getPosition().y+this->menuText.getGlobalBounds().height )
+		);
 }
 
 PauseMenuClass::~PauseMenuClass()
@@ -60,11 +61,20 @@ PauseMenuClass::~PauseMenuClass()
 		delete it->second;
 	}
 }
-
-	 //functions
-void PauseMenuClass::update()
+																				 
+std::map<std::string, gui::ButtonClass*>& PauseMenuClass::getButtons()
 {
+	return this->buttons;
+}
 
+//functions
+void PauseMenuClass::update(sf::Vector2f& mousePos)
+{
+	
+	for (auto& i : this->buttons)
+	{
+		i.second->update(mousePos);
+	}
 }
 
 void PauseMenuClass::render(sf::RenderTarget& target)

@@ -153,7 +153,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="AnimatioComponent.cpp" />
-    <ClCompile Include="ButtonClass.cpp" />
+    <ClCompile Include="GUI.cpp" />
     <ClCompile Include="CORE.cpp" />
     <ClCompile Include="EditorStateClass.cpp" />
     <ClCompile Include="EntityClass.cpp" />
@@ -165,6 +165,7 @@
     <ClCompile Include="PauseMenuClass.cpp" />
     <ClCompile Include="PlayerClass.cpp" />
     <ClCompile Include="Setting.cpp" />
+    <ClCompile Include="SettingStateClass.cpp" />
     <ClCompile Include="TileMap.cpp" />
     <ClCompile Include="StateClass.cpp" />
     <ClCompile Include="tinystr.cpp" />
@@ -174,7 +175,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="AnimatioComponent.h" />
-    <ClInclude Include="ButtonClass.h" />
+    <ClInclude Include="GUI.h" />
     <ClInclude Include="CORE.h" />
     <ClInclude Include="EditorStateClass.h" />
     <ClInclude Include="EntityClass.h" />
@@ -183,6 +184,7 @@
     <ClInclude Include="MovementComponents.h" />
     <ClInclude Include="PauseMenuClass.h" />
     <ClInclude Include="PlayerClass.h" />
+    <ClInclude Include="SettingStateClass.h" />
     <ClInclude Include="TileMap.h" />
     <ClInclude Include="MainMenuClass.h" />
     <ClInclude Include="Setting.h" />
@@ -195,7 +197,6 @@
     <None Include="Config\KeyBoard.ini" />
     <None Include="Config\KeyBoard_game.ini" />
     <None Include="Config\setting.ini" />
-    <None Include="Source.def" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

@@ -47,7 +47,7 @@ private:
 		{
 			//Update timer
 			this->done = false;
-			this->timer += 100.f * dt;
+			this->timer += 1000.f * dt;
 			if (this->timer >= this->animationTimer)
 			{
 				//reset timer
@@ -57,11 +57,13 @@ private:
 				if (this->currentRect != this->endRect)
 				{
 					this->currentRect.left += this->width;
+					//std::cout << "Animations != \n";
 				}
 				else //Reset
 				{
 					this->currentRect.left = this->startRect.left;
 					this->done = true;
+					//std::cout << "Animations == \n";
 				}
 
 				this->sprite.setTextureRect(this->currentRect);

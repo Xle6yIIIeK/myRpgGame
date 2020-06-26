@@ -19,11 +19,9 @@ EntityClass::~EntityClass()
 	delete this->hitboxcomponent;
 }
 
-void EntityClass::createHitBoxComponent(sf::Sprite& sprite,
-	float offset_x, float offset_y,
-	float width, float height)
+void EntityClass::createHitBoxComponent(sf::Sprite& sprite, float offset_x, float offset_y, float width, float height)
 {
-this->hitboxcomponent = new HitBoxComponent(sprite, offset_x, offset_y, width, height);
+	this->hitboxcomponent = new HitBoxComponent(sprite, offset_x, offset_y, width, height);
 }
 
 void EntityClass::createMovementComponent(const float maxSpeed, const float acceleration, const float deceleration)
@@ -40,7 +38,6 @@ void EntityClass::setTexture(sf::Texture& texture)
 {
 	this->sprite.setTexture(texture);
 }
-
 
 void EntityClass::setPosition(const float x, const float y)
 {

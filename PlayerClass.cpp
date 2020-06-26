@@ -9,17 +9,17 @@ void PlayerClass::initComponents()
 {
 }
 
-//Constructors / Destructors
+//Constructors / Destructors																							
 PlayerClass::PlayerClass(float x, float y, sf::Texture& texture_sheet)
 {
 	this->setPosition(x, y);
 
 	this->createHitBoxComponent(this->sprite, 0, 0, 64, 64);
-	this->createMovementComponent(300.f, 20.f, 5.f);
+	this->createMovementComponent(300.f, 60.f, 12.f);
 	this->createAnimationComponent(texture_sheet);
 
-	this->anmationcomponent->addAnimation("IDLE", 20.f, 0, 0, 0, 0, 152, 197);
-	this->anmationcomponent->addAnimation("WALK", 10.f, 0, 0, 5, 0, 64, 64);
+	this->anmationcomponent->addAnimation("IDLE", 80.f, 0, 0, 3, 0, 28, 36);
+	this->anmationcomponent->addAnimation("WALK", 40.f, 0, 1, 16, 1, 28, 36);
 	this->anmationcomponent->addAnimation("ATTACK", 10.f, 0, 1, 15, 1, 32, 32);
 }
 
@@ -56,27 +56,19 @@ void PlayerClass::updateAnimation(const float& dt)
 	if (this->movementcomponent->getState(IDLE))
 	{
 		this->sprite.setOrigin(0, 0);
-		this->sprite.setScale(0.8f, 0.8f);
+		this->sprite.setScale(2.f, 2.f);
 		this->anmationcomponent->play("IDLE", dt, 0);
 	}
 	else if (this->movementcomponent->getState(MOVELEFT))
 	{
-		if (this->sprite.getScale().x < 0.f)
-		{
-			this->sprite.setOrigin(0, 0);
-			this->sprite.setScale(0.8f, 0.8f);
-		}
-		this->anmationcomponent->play("WALK", dt,
-			this->movementcomponent->getVelocity().x
-			, this->movementcomponent->getMaxVelocity(), 0);
+			this->sprite.setOrigin(28, 0);
+			this->sprite.setScale(-2.0f, 2.0f);	
+		this->anmationcomponent->play("WALK", dt, 0);
 	}
-	else if (this->movementcomponent->getState(MOVERIGHT))
-	{
-		if (this->sprite.getScale().x > 0.f)
-		{
-			this->sprite.setOrigin(32, 0);
-			this->sprite.setScale(-0.8f, 0.8f);
-		};
+	else if (this->movementcomponent->getState(MOVERIGHT))														  
+	{	
+			this->sprite.setOrigin(0, 0);
+			this->sprite.setScale(2.0f, 2.0f);
 		this->anmationcomponent->play("WALK", dt, 0);
 	}
 	else if (this->movementcomponent->getState(MOVEUP))
@@ -94,7 +86,6 @@ void PlayerClass::update(const float& dt)
 	this->movementcomponent->update(dt);
 	this->updateAttack();
 	this->updateAnimation(dt);
-
 
 	this->hitboxcomponent->update();
 }

@@ -1,11 +1,11 @@
-#include "EditorStateClass.h"
+#include "SettingStateClass.h"
 
-void EditorStateClass::initVariables()
+void SettingState::initVariables()
 {
 
 }
 
-void EditorStateClass::initKeybinds()
+void SettingState::initKeybinds()
 {
 	std::fstream ifs("Config/KeyBoard_game.ini");
 
@@ -22,9 +22,9 @@ void EditorStateClass::initKeybinds()
 	ifs.close();
 }
 
-void EditorStateClass::initBackground()
+void SettingState::initBackground()
 {
-	this->backgroundShape.setSize(
+	this->backgoundshape.setSize(
 		sf::Vector2f(
 			this->window->getSize().x,
 			this->window->getSize().y
@@ -33,13 +33,13 @@ void EditorStateClass::initBackground()
 
 	if (!this->backgroundTexture.loadFromFile("Resourses/images/backGround.png"))
 	{
-		throw "ERROR::EditorStateClass::initBackground Resourses/images/backGround.png Can`t do load";
+		throw "ERROR::SettingState::initBackground Resourses/images/backGround.png Can`t do load";
 	}
 
-	this->backgroundShape.setTexture(&this->backgroundTexture);
+	this->backgoundshape.setTexture(&this->backgroundTexture);
 }
 
-void EditorStateClass::initStates(StateData* state_data)
+void SettingState::initStates(StateData* state_data)
 {
 	this->window = state_data->window;
 	this->supportedKeys = state_data->supportedKeys;
@@ -52,10 +52,12 @@ void EditorStateClass::initStates(StateData* state_data)
 	this->font = state_data->GlobalFont;
 }
 
-void EditorStateClass::initButtons()
+void SettingState::initButtons()
 {
 	this->button["EXIT_BUTTON"] = new gui::ButtonClass(
-		sf::Vector2f(this->window->getSize().x - 120, this->window->getSize().y - 50),
+		sf::Vector2f(
+			this->window->getSize().x - 120.f,
+			this->window->getSize().y - 50.f),
 		sf::Vector2f(120, 50),
 		&this->font, "Exit", 30,
 		sf::Color(180, 180, 180), sf::Color(220, 220, 220), sf::Color(200, 200, 200),
@@ -63,32 +65,46 @@ void EditorStateClass::initButtons()
 		);
 }
 
-EditorStateClass::EditorStateClass(StateData* state_data)
-	:State(state_data)
+void SettingState::initDropList()
+{
+	std::string list[] = { "0", "1", "2", "3", "4", "4", "4", "4" };
+
+	this->droplist = new gui::DropList(
+		sf::Vector2f(0, 0), sf::Vector2f(250, 30),
+		this->font, list, _countof(list)
+		);
+	
+}
+
+SettingState::SettingState(StateData* state_data):
+	State(state_data)
 {
 	this->initVariables();
 	this->initKeybinds();
 	this->initBackground();
 	this->initStates(state_data);
 	this->initButtons();
+	this->initDropList();
 }
 
-EditorStateClass::~EditorStateClass()
+SettingState::~SettingState()
 {
 	auto it = this->button.begin();
 	for (it = this->button.begin(); it != this->button.end(); ++it)
 	{
 		delete it->second;
 	}
+
+	delete this->droplist;
 }
 
 //Functions
-void EditorStateClass::updateInput(const float& dt)
+void SettingState::updateInput(const float& dt)
 {
-	
+
 }
 
-void EditorStateClass::updateButtons()
+void SettingState::updateButtons()
 {
 	for (auto& it : this->button)
 	{
@@ -101,14 +117,20 @@ void EditorStateClass::updateButtons()
 	}
 }
 
-void EditorStateClass::update(const float& dt)
+void SettingState::updateDropList(const float& dt)
+{
+	this->droplist->update(this->mousePosView,dt);
+}
+
+void SettingState::update(const float& dt)
 {
 	this->updateMousePositions();
 	this->updateInput(dt);
 	this->updateButtons();
+	this->updateDropList(dt); 
 }
 
-void EditorStateClass::renderButtons(sf::RenderTarget& target)
+void SettingState::renderButtons(sf::RenderTarget& target)
 {
 	for (auto& it : this->button)
 	{
@@ -116,12 +138,15 @@ void EditorStateClass::renderButtons(sf::RenderTarget& target)
 	}
 }
 
-void EditorStateClass::render(sf::RenderTarget* target)
+void SettingState::render(sf::RenderTarget* target)
 {
 	if (!target)
-		target = this->window;
+		target = this->stateData->window;
 
-	target->draw(this->backgroundShape);
+	target->draw(this->backgoundshape);
 	this->renderButtons(*target);
+
+	this->droplist->render(*target);
 }
 
+//Accsesors

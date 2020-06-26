@@ -20,7 +20,6 @@ sf::Vector2i Level::GetTileSize()
 	return sf::Vector2i(tileWidth, tileHeight);
 }
 
-
 bool Level::LoadFromFile(std::string filename)//двоеточия-обращение к методам класса вне класса 
 {
 	TiXmlDocument levelFile(filename.c_str());//загружаем файл в TiXmlDocument
@@ -222,10 +221,6 @@ bool Level::LoadFromFile(std::string filename)//двоеточия-обращение к методам кл
 	}
 	return true;
 }
-
-
-
-
 
 Object Level::GetObject(std::string name)
 {

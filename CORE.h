@@ -1,6 +1,7 @@
 #ifndef CORE_H
 #define CORE_H
 #include"MainMenuClass.h"
+
 class CORE
 {
 private:
@@ -10,6 +11,7 @@ private:
 	sf::Event sfEvent;
 	float gridSize;
 	sf::Clock clock;
+	sf::Font gFont;
 
 	float dt;
 
@@ -22,6 +24,7 @@ private:
 	void initKeys();
 	void initStateData();
 	void initState();
+	void initFount();
 
 public:
 	CORE();
@@ -34,5 +37,6 @@ public:
 	void update();
 	void render();
 	void run();
+
 };
 #endif

@@ -13,11 +13,13 @@ struct Object
 	std::map<std::string, std::string> properties;		//создаЄм ассоциатиный массив. ключ - строковый тип, значение - строковый
 	sf::Sprite sprite;									//объ€вили спрайт
 };
+
 struct Layer				//слои
 {
 	int opacity;								//непрозрачность сло€
 	std::vector<sf::Sprite> tiles;				//закидываем в вектор тайлы
 };
+
 class Level										//главный класс - уровень
 {
 public:
@@ -36,6 +38,4 @@ private:
 	std::vector<Layer> layers;
 };
 ///////////////////////////////////////
-
-
 #endif

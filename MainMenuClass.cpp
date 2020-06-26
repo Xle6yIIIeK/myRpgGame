@@ -1,9 +1,11 @@
 #include "MainMenuClass.h"
 #include "GameStateClass.h"
 #include "EditorStateClass.h"
+#include "SettingStateClass.h"
 
 void MainMenuClass::initVariables()
 {
+
 }
 
 void MainMenuClass::initKeybinds()
@@ -19,16 +21,8 @@ void MainMenuClass::initKeybinds()
 			this->keybinds[key] = this->supportedKeys->at(key2);
 		}
 	}
+
 	ifs.close();
-}
-
-void MainMenuClass::initFonts()
-{
-
-	if (!this->font.loadFromFile("Resourses/Fonts/lunchds.ttf"))
-	{
-		throw("ERROR::MAINMENUCLASS::INITFONTS font not find");
-	}
 }
 
 void MainMenuClass::initBackground()
@@ -44,12 +38,12 @@ void MainMenuClass::initBackground()
 	{
 		throw "ERROR::MainMenuClass::initBackground Resourses/images/backGround.png Can`t do load";
 	}
+
 	this->backgoundshape.setTexture(&this->backgroundTexture);
 }
 
 void MainMenuClass::initStates(StateData* state_data)
 {
-	this->stateData = state_data;
 	this->window = state_data->window;
 	this->supportedKeys = state_data->supportedKeys;
 	this->states = state_data->states;
@@ -58,50 +52,44 @@ void MainMenuClass::initStates(StateData* state_data)
 	this->keytime = 0.f;
 	this->keytimeMax = 10.f;
 	this->gridSize = state_data->gridSize;
+	this->font = state_data->GlobalFont;
 }
 
 void MainMenuClass::initButtons()
 {
-	this->button["GAME_STATE_BUTTON"] = new ButtonClass(//typename[""] Button
-		this->window->getSize().x - 120,			   //Pos x
-		this->window->getSize().y - 200,			  //Pos Y
-		120, 50,									 //width heigth
-		&this->font, "New Game",					//Font & Text in button	
-		23,										   //character size text
-		sf::Color(180, 180, 180),				  //TEXT_IDLE_COLOR
-		sf::Color(220, 220, 220),				 //TEXT_HOVER_COLOR
-		sf::Color(200, 200, 200),				//TEXT_ACTIVE_COLOR
-		sf::Color(80, 80, 80),				   //IDLE_COLOR
-		sf::Color(100, 100, 100),			  //HOVER_COLOR
-		sf::Color(70, 70, 70)				 //ACTIVE_COLOR
-		);
+	this->button["GAME_STATE_BUTTON"] = new gui::ButtonClass(
+		sf::Vector2f(
+			this->window->getSize().x - 120,
+			this->window->getSize().y - 250),
+		sf::Vector2f(120.f, 50.f),
+		&this->font, "New Game", 30,
+		sf::Color(180, 180, 180), sf::Color(220, 220, 220), sf::Color(200, 200, 200),
+		sf::Color(80, 80, 80), sf::Color(100, 100, 100), sf::Color(70, 70, 70));
 
-	this->button["EDITOR_BUTTON"] = new ButtonClass(    //typename[""] Button
-		this->window->getSize().x - 120,			   //Pos x					
-		this->window->getSize().y - 150,			  //Pos Y
-		120, 50,									 //width heigth
-		&this->font, "Editor",						//Font & Text in button	
-		23,										   //character size text
-		sf::Color(180, 180, 180),				  //TEXT_IDLE_COLOR
-		sf::Color(220, 220, 220),				 //TEXT_HOVER_COLOR
-		sf::Color(200, 200, 200),				//TEXT_ACTIVE_COLOR
-		sf::Color(80, 80, 80),				   //IDLE_COLOR
-		sf::Color(100, 100, 100),			  //HOVER_COLOR
-		sf::Color(70, 70, 70)				 //ACTIVE_COLOR
-		);
+	this->button["EDITOR_BUTTON"] = new gui::ButtonClass(
+		sf::Vector2f(
+			this->window->getSize().x - 120,
+			this->window->getSize().y - 200),
+		sf::Vector2f(120.f, 50.f),
+		&this->font, "Editor", 30,
+		sf::Color(180, 180, 180), sf::Color(220, 220, 220), sf::Color(200, 200, 200),
+		sf::Color(80, 80, 80), sf::Color(100, 100, 100), sf::Color(70, 70, 70));
 
-	this->button["EXIT_BUTTON"] = new ButtonClass(		//typename[""] Button
-		this->window->getSize().x - 120,			   //Pos x					
-		this->window->getSize().y - 50,				  //Pos Y
-		120, 50,									 //width heigth
-		&this->font, "Exit",						//Font & Text in button	
-		23,										   //character size text
-		sf::Color(180, 180, 180),				  //TEXT_IDLE_COLOR
-		sf::Color(220, 220, 220),				 //TEXT_HOVER_COLOR
-		sf::Color(200, 200, 200),				//TEXT_ACTIVE_COLOR
-		sf::Color(80, 80, 80),				   //IDLE_COLOR
-		sf::Color(100, 100, 100),			  //HOVER_COLOR
-		sf::Color(70, 70, 70)				 //ACTIVE_COLOR					 
+	this->button["SETTING_BUTTON"] = new gui::ButtonClass(
+		sf::Vector2f(
+			this->window->getSize().x - 120,
+			this->window->getSize().y - 150),
+		sf::Vector2f(120, 50),
+		&this->font, "Setting", 30,
+		sf::Color(180, 180, 180), sf::Color(220, 220, 220), sf::Color(200, 200, 200),
+		sf::Color(80, 80, 80), sf::Color(100, 100, 100), sf::Color(70, 70, 70));
+
+	this->button["EXIT_BUTTON"] = new gui::ButtonClass(
+		sf::Vector2f(this->window->getSize().x - 120, this->window->getSize().y - 50),
+		sf::Vector2f(120, 50),
+		&this->font, "Exit", 30,
+		sf::Color(180, 180, 180), sf::Color(220, 220, 220), sf::Color(200, 200, 200),
+		sf::Color(80, 80, 80), sf::Color(100, 100, 100), sf::Color(70, 70, 70)
 		);
 }
 
@@ -117,7 +105,6 @@ MainMenuClass::MainMenuClass(StateData* state_data)
 {
 	this->initVariables();
 	this->initKeybinds();
-	this->initFonts();
 	this->initBackground();
 	this->initStates(state_data);
 	this->initButtons();
@@ -135,8 +122,7 @@ MainMenuClass::~MainMenuClass()
 
 void MainMenuClass::updateInput(const float& dt)
 {
-	this->getQuit();
-	
+//	this->getQuit();
 }
 
 void MainMenuClass::updateButtons()
@@ -154,17 +140,21 @@ void MainMenuClass::update(const float& dt)
 	this->playMusic();
 	this->updateButtons();
 
-	if (this->button["EXIT_BUTTON"]->isPressed())
-	{
-		this->quit = true;
-	}
 	if (this->button["GAME_STATE_BUTTON"]->isPressed())
 	{
 		this->states->push(new GameState(this->stateData));
 	}
+	if (this->button["SETTING_BUTTON"]->isPressed())
+	{
+		this->states->push(new SettingState(this->stateData));
+	}
 	if (this->button["EDITOR_BUTTON"]->isPressed())
 	{
 		this->states->push(new EditorStateClass(this->stateData));
+	}
+	if (this->button["EXIT_BUTTON"]->isPressed())
+	{
+		this->endState();
 	}
 }
 

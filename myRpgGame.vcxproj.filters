@@ -69,9 +69,6 @@
     <ClCompile Include="PlayerClass.cpp">
       <Filter>Entitys</Filter>
     </ClCompile>
-    <ClCompile Include="ButtonClass.cpp">
-      <Filter>Components</Filter>
-    </ClCompile>
     <ClCompile Include="MovementComponents.cpp">
       <Filter>Components</Filter>
     </ClCompile>
@@ -89,6 +86,12 @@
     </ClCompile>
     <ClCompile Include="PauseMenuClass.cpp">
       <Filter>States</Filter>
+    </ClCompile>
+    <ClCompile Include="SettingStateClass.cpp">
+      <Filter>States</Filter>
+    </ClCompile>
+    <ClCompile Include="GUI.cpp">
+      <Filter>Components</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -119,9 +122,6 @@
     <ClInclude Include="PlayerClass.h">
       <Filter>Entitys</Filter>
     </ClInclude>
-    <ClInclude Include="ButtonClass.h">
-      <Filter>Components</Filter>
-    </ClInclude>
     <ClInclude Include="MovementComponents.h">
       <Filter>Components</Filter>
     </ClInclude>
@@ -143,6 +143,12 @@
     <ClInclude Include="PauseMenuClass.h">
       <Filter>States</Filter>
     </ClInclude>
+    <ClInclude Include="SettingStateClass.h">
+      <Filter>States</Filter>
+    </ClInclude>
+    <ClInclude Include="GUI.h">
+      <Filter>Components</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="Config\setting.ini">
@@ -153,9 +159,6 @@
     </None>
     <None Include="Config\KeyBoard_game.ini">
       <Filter>Файлы ресурсов</Filter>
-    </None>
-    <None Include="Source.def">
-      <Filter>Core</Filter>
     </None>
   </ItemGroup>
 </Project>
